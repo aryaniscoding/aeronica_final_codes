@@ -352,10 +352,12 @@ int main(void)
     float u2 = U_opt[2];
 
     /* X-frame motor mixing */
-    float m1f = BASE_THROTTLE - u0 + u1 - u2;
-    float m2f = BASE_THROTTLE + u0 + u1 + u2;
-    float m3f = BASE_THROTTLE - u0 - u1 + u2;
-    float m4f = BASE_THROTTLE + u0 - u1 - u2;
+    float m1f = BASE_THROTTLE - u0 - u1 - u2;
+    float m2f = BASE_THROTTLE + u0 + u1 - u2;
+    float m3f = BASE_THROTTLE - u0 + u1 + u2;
+    float m4f = BASE_THROTTLE - u0 + u1 + u2;
+
+  
     Motor_SetPWM((uint16_t)m1f, (uint16_t)m2f, (uint16_t)m3f, (uint16_t)m4f);
 
     /* USER CODE END WHILE */
