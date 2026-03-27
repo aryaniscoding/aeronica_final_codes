@@ -177,16 +177,16 @@ Motor Layout (top view, nose pointing up):
            \     /
             [X]     ← drone center
            /     \
-       M3 (CCW)  M4 (CW)
+       M4 (CCW)  M3 (CW)
 ```
 
 The mixing equations convert 3 control outputs into 4 motor speeds:
 
 ```c
-M1 = BASE_THROTTLE - u_roll + u_pitch - u_yaw    // front-left, spins clockwise
-M2 = BASE_THROTTLE + u_roll + u_pitch + u_yaw    // front-right, spins counter-clockwise
-M3 = BASE_THROTTLE - u_roll - u_pitch + u_yaw    // rear-left, spins counter-clockwise
-M4 = BASE_THROTTLE + u_roll - u_pitch - u_yaw    // rear-right, spins clockwise
+M1 = BASE_THROTTLE - u_roll - u_pitch - u_yaw    // front-left, spins clockwise
+M2 = BASE_THROTTLE + u_roll - u_pitch + u_yaw    // front-right, spins counter-clockwise
+M3 = BASE_THROTTLE + u_roll + u_pitch - u_yaw    // rear-left, spins counter-clockwise
+M4 = BASE_THROTTLE - u_roll + u_pitch + u_yaw    // rear-right, spins clockwise
 ```
 
 **Why these signs?**
