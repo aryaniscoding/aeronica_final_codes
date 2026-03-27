@@ -110,15 +110,19 @@ int main(void)
     for (int i = 0; i < CTRL_DIM; i++) { u[i] = CLAMP(-u[i], -U_MAX, U_MAX); }
 
     float m1f = BASE_THROTTLE - u[0] + u[1] - u[2];
-    float m2f = BASE_THROTTLE + u[0] + u[1] + u[2];
-    float m3f = BASE_THROTTLE - u[0] - u[1] + u[2];
-    float m4f = BASE_THROTTLE + u[0] - u[1] - u[2];
+    float m2f = BASE_THROTTLE + u[0] - u[1] + u[2];
+    float m3f = BASE_THROTTLE + u[0] + u[1] - u[2];
+    float m4f = BASE_THROTTLE - u[0] + u[1] + u[2];
     Motor_SetPWM((uint16_t)m1f, (uint16_t)m2f, (uint16_t)m3f, (uint16_t)m4f);
     /* USER CODE END WHILE */
     /* USER CODE BEGIN 3 */
   }
   /* USER CODE END 3 */
 }
+M1 = BASE_THROTTLE - u_roll - u_pitch - u_yaw    // front-left, spins clockwise
+M2 = BASE_THROTTLE + u_roll - u_pitch + u_yaw    // front-right, spins counter-clockwise
+M3 = BASE_THROTTLE + u_roll + u_pitch - u_yaw    // rear-left, spins counter-clockwise
+M4 = BASE_THROTTLE - u_roll + u_pitch + u_yaw    // rear-right, spins clockwise
 
 void SystemClock_Config(void)
 {
