@@ -266,10 +266,12 @@ int main(void)
      *  M3 = throttle - roll - pitch + yaw   (rear-left,   CCW)
      *  M4 = throttle + roll - pitch - yaw   (rear-right,  CW)
      */
-    float m1 = BASE_THROTTLE - roll_out + pitch_out - yaw_out;
-    float m2 = BASE_THROTTLE + roll_out + pitch_out + yaw_out;
-    float m3 = BASE_THROTTLE - roll_out - pitch_out + yaw_out;
-    float m4 = BASE_THROTTLE + roll_out - pitch_out - yaw_out;
+    float m1 = BASE_THROTTLE - roll_out - pitch_out - yaw_out; //cw
+    float m2 = BASE_THROTTLE + roll_out - pitch_out + yaw_out; //acw
+    float m3 = BASE_THROTTLE + roll_out + pitch_out - yaw_out; //acw
+    float m4 = BASE_THROTTLE - roll_out + pitch_out + yaw_out; //cw
+ 
+
 
     Motor_SetPWM((uint16_t)m1, (uint16_t)m2, (uint16_t)m3, (uint16_t)m4);
 
