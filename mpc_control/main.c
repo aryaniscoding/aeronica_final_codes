@@ -126,10 +126,15 @@ int main(void)
         prev_u[i] = u[i];
     }
 
-    float m1f = BASE_THROTTLE - u[0] + u[1] - u[2];
-    float m2f = BASE_THROTTLE + u[0] + u[1] + u[2];
-    float m3f = BASE_THROTTLE - u[0] - u[1] + u[2];
-    float m4f = BASE_THROTTLE + u[0] - u[1] - u[2];
+    float m1f = BASE_THROTTLE - u[0] - u[1] - u[2];
+    float m2f = BASE_THROTTLE + u[0] - u[1] + u[2];
+    float m3f = BASE_THROTTLE + u[0] + u[1] - u[2];
+    float m4f = BASE_THROTTLE - u[0] + u[1] + u[2];
+
+      M1 = BASE_THROTTLE - u_roll - u_pitch - u_yaw    // front-left, spins clockwise
+M2 = BASE_THROTTLE + u_roll - u_pitch + u_yaw    // front-right, spins counter-clockwise
+M3 = BASE_THROTTLE + u_roll + u_pitch - u_yaw    // rear-left, spins counter-clockwise
+M4 = BASE_THROTTLE - u_roll + u_pitch + u_yaw    // rear-right, spins clockwise
     Motor_SetPWM((uint16_t)m1f, (uint16_t)m2f, (uint16_t)m3f, (uint16_t)m4f);
     /* USER CODE END WHILE */
     /* USER CODE BEGIN 3 */
